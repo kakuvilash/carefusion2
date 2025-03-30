@@ -14,6 +14,10 @@ import SignupPage from "./pages/auth/SignupPage";
 import PatientDashboard from "./pages/dashboard/PatientDashboard";
 import DoctorDashboard from "./pages/dashboard/DoctorDashboard";
 import DashboardRedirect from "./pages/dashboard/DashboardRedirect";
+import AppointmentsDashboard from "./pages/dashboard/AppointmentsDashboard";
+import MedicalRecordsDashboard from "./pages/dashboard/MedicalRecordsDashboard";
+import SymptomCheckerDashboard from "./pages/dashboard/SymptomCheckerDashboard";
+import ChatDashboard from "./pages/dashboard/ChatDashboard";
 import NotFound from "./pages/NotFound";
 
 // Components
@@ -70,6 +74,40 @@ const App = () => {
                 element={
                   <ProtectedRoute requiredRole="doctor">
                     <DoctorDashboard />
+                  </ProtectedRoute>
+                } 
+              />
+              
+              {/* New Feature Dashboards */}
+              <Route 
+                path="/appointments" 
+                element={
+                  <ProtectedRoute>
+                    <AppointmentsDashboard />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/medical-records" 
+                element={
+                  <ProtectedRoute>
+                    <MedicalRecordsDashboard />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/symptom-checker" 
+                element={
+                  <ProtectedRoute>
+                    <SymptomCheckerDashboard />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/chat" 
+                element={
+                  <ProtectedRoute>
+                    <ChatDashboard />
                   </ProtectedRoute>
                 } 
               />
