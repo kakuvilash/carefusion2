@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -10,6 +9,8 @@ import { useToast } from "@/hooks/use-toast";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import NotificationPanel from "@/components/dashboard/NotificationPanel";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -22,6 +23,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   const isMobile = useIsMobile();
   const [collapsed, setCollapsed] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [notificationOpen, setNotificationOpen] = useState(false);
   
   const handleLogout = async () => {
     try {
@@ -53,6 +55,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   const patientMenuItems = [
     { label: "Dashboard", icon: <LayoutDashboard size={20} />, path: "/dashboard" },
     { label: "Appointments", icon: <Calendar size={20} />, path: "/appointments" },
+    { label: "Book Appointment", icon: <Calendar size={20} />, path: "/book-appointment" },
     { label: "Medical Records", icon: <FileText size={20} />, path: "/medical-records" },
     { label: "AI Symptom Checker", icon: <Activity size={20} />, path: "/symptom-checker" },
     { label: "Chat with Doctor", icon: <MessageSquare size={20} />, path: "/chat" },
@@ -201,10 +204,17 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
             </div>
             
             <div className="flex items-center ml-auto space-x-4">
-              <Button variant="outline" size="icon" className="relative">
-                <Bell size={18} />
-                <span className="absolute top-0 right-0 block w-2 h-2 bg-carefusion-primary rounded-full"></span>
-              </Button>
+              <Popover open={notificationOpen} onOpenChange={setNotificationOpen}>
+                <PopoverTrigger asChild>
+                  <Button variant="outline" size="icon" className="relative">
+                    <Bell size={18} />
+                    <span className="absolute top-0 right-0 block w-2 h-2 bg-carefusion-primary rounded-full"></span>
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-[380px] p-0" align="end">
+                  <NotificationPanel />
+                </PopoverContent>
+              </Popover>
               
               <div className="flex items-center space-x-3">
                 <Avatar>

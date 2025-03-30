@@ -18,6 +18,7 @@ import AppointmentsDashboard from "./pages/dashboard/AppointmentsDashboard";
 import MedicalRecordsDashboard from "./pages/dashboard/MedicalRecordsDashboard";
 import SymptomCheckerDashboard from "./pages/dashboard/SymptomCheckerDashboard";
 import ChatDashboard from "./pages/dashboard/ChatDashboard";
+import BookAppointmentDashboard from "./pages/dashboard/BookAppointmentDashboard";
 import NotFound from "./pages/NotFound";
 
 // Components
@@ -78,12 +79,20 @@ const App = () => {
                 } 
               />
               
-              {/* New Feature Dashboards */}
+              {/* Feature Dashboards */}
               <Route 
                 path="/appointments" 
                 element={
                   <ProtectedRoute>
                     <AppointmentsDashboard />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/book-appointment" 
+                element={
+                  <ProtectedRoute>
+                    <BookAppointmentDashboard />
                   </ProtectedRoute>
                 } 
               />
