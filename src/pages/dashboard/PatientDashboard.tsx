@@ -1,4 +1,3 @@
-
 import React from "react";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import StatCard from "@/components/dashboard/StatCard";
@@ -6,7 +5,7 @@ import AppointmentCard from "@/components/dashboard/AppointmentCard";
 import MedicalRecordCard from "@/components/dashboard/MedicalRecordCard";
 import AIHealthCard from "@/components/dashboard/AIHealthCard";
 import ChatbotCard from "@/components/dashboard/ChatbotCard";
-import { Activity, Calendar, FileText, Pills } from "lucide-react";
+import { Activity, Calendar, FileText, Pill } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const PatientDashboard: React.FC = () => {
@@ -49,7 +48,7 @@ const PatientDashboard: React.FC = () => {
           <StatCard
             title="Medications"
             value="2"
-            icon={<Pills size={20} />}
+            icon={<Pill size={20} />}
             description="Next dose in 4 hours"
           />
         </div>

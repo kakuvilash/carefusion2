@@ -1,11 +1,10 @@
-
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { useAuth } from "@/context/AuthContext";
-import { Bell, Calendar, ChevronLeft, ChevronRight, LayoutDashboard, LogOut, MessageSquare, Settings, SunMoon, User, FileText, Activity, Pills, Shield } from "lucide-react";
+import { Bell, Calendar, ChevronLeft, ChevronRight, LayoutDashboard, LogOut, MessageSquare, Settings, SunMoon, User, FileText, Activity, Pill, Shield } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -47,7 +46,6 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
     }
   };
   
-  // Role-based menu items
   const patientMenuItems = [
     { label: "Dashboard", icon: <LayoutDashboard size={20} />, path: "/dashboard" },
     { label: "Appointments", icon: <Calendar size={20} />, path: "/appointments" },
@@ -60,7 +58,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
     { label: "Dashboard", icon: <LayoutDashboard size={20} />, path: "/dashboard" },
     { label: "Appointments", icon: <Calendar size={20} />, path: "/appointments" },
     { label: "Patient Records", icon: <FileText size={20} />, path: "/patient-records" },
-    { label: "Medicine Advisor", icon: <Pills size={20} />, path: "/medicine-advisor" },
+    { label: "Medicine Advisor", icon: <Pill size={20} />, path: "/medicine-advisor" },
     { label: "Chat with Patients", icon: <MessageSquare size={20} />, path: "/chat" },
   ];
   
@@ -68,7 +66,6 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   
   return (
     <div className="flex h-screen bg-carefusion-background dark:bg-carefusion-dark">
-      {/* Sidebar */}
       <aside 
         className={`bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 transition-all duration-300 ${
           isMobile ? (collapsed ? "w-0 -ml-20 overflow-hidden" : "w-64") : (collapsed ? "w-20" : "w-64")
@@ -168,9 +165,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
         </div>
       </aside>
       
-      {/* Main content */}
       <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Header */}
         <header className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 py-4 px-6">
           <div className="flex items-center justify-between">
             {isMobile && (
@@ -203,7 +198,6 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
           </div>
         </header>
         
-        {/* Content */}
         <main className="flex-1 overflow-y-auto bg-gray-50 dark:bg-gray-900/50 p-6">
           {children}
         </main>
