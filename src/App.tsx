@@ -16,6 +16,8 @@ import DoctorDashboard from "./pages/dashboard/DoctorDashboard";
 import DashboardRedirect from "./pages/dashboard/DashboardRedirect";
 import AppointmentsDashboard from "./pages/dashboard/AppointmentsDashboard";
 import MedicalRecordsDashboard from "./pages/dashboard/MedicalRecordsDashboard";
+import PatientRecordsDashboard from "./pages/dashboard/PatientRecordsDashboard";
+import MedicineAdvisorDashboard from "./pages/dashboard/MedicineAdvisorDashboard";
 import SymptomCheckerDashboard from "./pages/dashboard/SymptomCheckerDashboard";
 import ChatDashboard from "./pages/dashboard/ChatDashboard";
 import BookAppointmentDashboard from "./pages/dashboard/BookAppointmentDashboard";
@@ -101,6 +103,22 @@ const App = () => {
                 element={
                   <ProtectedRoute>
                     <MedicalRecordsDashboard />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/patient-records" 
+                element={
+                  <ProtectedRoute requiredRole="doctor">
+                    <PatientRecordsDashboard />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/medicine-advisor" 
+                element={
+                  <ProtectedRoute requiredRole="doctor">
+                    <MedicineAdvisorDashboard />
                   </ProtectedRoute>
                 } 
               />
