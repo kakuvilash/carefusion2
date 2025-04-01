@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -134,65 +133,6 @@ const Index: React.FC = () => {
             <p className="text-sm md:text-base text-gray-600 dark:text-gray-300">
               Get personalized health analytics and recommendations based on your medical data.
             </p>
-          </div>
-        </div>
-      </section>
-      
-      {/* Mobile App Promotion Section */}
-      <section className="py-10 md:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="glass-card-lg bg-gradient-to-r from-carefusion-primary/10 to-carefusion-secondary/10 p-6 md:p-12 rounded-2xl">
-          <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="md:w-1/2">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4">CareFusion Mobile App</h2>
-              <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-6">
-                Access your healthcare needs on the go with our mobile application. Available for iOS and Android devices.
-              </p>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start">
-                  <Check className="h-5 w-5 text-carefusion-primary mr-2 mt-0.5" />
-                  <span className="text-sm md:text-base">Quick access to your medical records</span>
-                </li>
-                <li className="flex items-start">
-                  <Check className="h-5 w-5 text-carefusion-primary mr-2 mt-0.5" />
-                  <span className="text-sm md:text-base">Book appointments with just a few taps</span>
-                </li>
-                <li className="flex items-start">
-                  <Check className="h-5 w-5 text-carefusion-primary mr-2 mt-0.5" />
-                  <span className="text-sm md:text-base">Chat with doctors anytime, anywhere</span>
-                </li>
-                <li className="flex items-start">
-                  <Check className="h-5 w-5 text-carefusion-primary mr-2 mt-0.5" />
-                  <span className="text-sm md:text-base">Responsive design for all device sizes</span>
-                </li>
-              </ul>
-              <div className="flex flex-wrap gap-4">
-                <Button className="bg-black text-white hover:bg-black/90">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M10 2a8 8 0 100 16 8 8 0 000-16zm0 14a6 6 0 110-12 6 6 0 010 12z" />
-                    <path fillRule="evenodd" d="M10 4a6 6 0 100 12 6 6 0 000-12zm0 10a4 4 0 110-8 4 4 0 010 8z" clipRule="evenodd" />
-                  </svg>
-                  App Store
-                </Button>
-                <Button className="bg-green-600 text-white hover:bg-green-700">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                  </svg>
-                  Google Play
-                </Button>
-              </div>
-            </div>
-            <div className="md:w-1/2 flex justify-center">
-              <div className="relative w-[280px] h-[560px] bg-black rounded-[3rem] border-[10px] border-black overflow-hidden shadow-xl">
-                <div className="absolute top-0 w-[40%] h-[30px] bg-black left-1/2 transform -translate-x-1/2 rounded-b-2xl z-10"></div>
-                <div className="w-full h-full bg-carefusion-background overflow-hidden">
-                  <img 
-                    src="https://placehold.co/260x540/carefusion-primary/white?text=CareFusion+App" 
-                    alt="CareFusion Mobile App" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
