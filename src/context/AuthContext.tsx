@@ -9,6 +9,7 @@ interface User {
   email: string;
   role: UserRole;
   profilePicture?: string;
+  doctorId?: string; // Added doctor ID field
 }
 
 interface AuthContextType {
@@ -16,10 +17,10 @@ interface AuthContextType {
   isAuthenticated: boolean;
   userRole: UserRole;
   loading: boolean;
-  login: (email: string, password: string, role?: UserRole) => Promise<void>;
-  signUp: (name: string, email: string, password: string, role: UserRole) => Promise<void>;
+  login: (email: string, password: string, role?: UserRole, doctorId?: string) => Promise<void>;
+  signUp: (name: string, email: string, password: string, role: UserRole, doctorId?: string) => Promise<void>;
   logout: () => Promise<void>;
-  googleSignIn: (role?: UserRole) => Promise<void>;
+  googleSignIn: (role?: UserRole, doctorId?: string) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -42,7 +43,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     checkAuth();
   }, []);
 
-  const login = async (email: string, password: string, role: UserRole = "patient") => {
+  const login = async (email: string, password: string, role: UserRole = "patient", doctorId?: string) => {
     setLoading(true);
     try {
       // Mock login - in a real app, this would be an API call
@@ -54,6 +55,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         profilePicture: "https://ui-avatars.com/api/?name=Demo+User&background=0070F3&color=fff"
       };
       
+      // Add doctor ID if provided
+      if (role === "doctor" && doctorId) {
+        mockUser.doctorId = doctorId;
+      }
+      
       setCurrentUser(mockUser);
       localStorage.setItem("carefusion_user", JSON.stringify(mockUser));
     } catch (error) {
@@ -64,7 +70,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
-  const signUp = async (name: string, email: string, password: string, role: UserRole) => {
+  const signUp = async (name: string, email: string, password: string, role: UserRole, doctorId?: string) => {
     setLoading(true);
     try {
       // Mock signup - in a real app, this would be an API call
@@ -75,6 +81,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         role: role,
         profilePicture: `https://ui-avatars.com/api/?name=${name.replace(' ', '+')}&background=0070F3&color=fff`
       };
+      
+      // Add doctor ID if provided
+      if (role === "doctor" && doctorId) {
+        mockUser.doctorId = doctorId;
+      }
       
       setCurrentUser(mockUser);
       localStorage.setItem("carefusion_user", JSON.stringify(mockUser));
@@ -92,7 +103,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     localStorage.removeItem("carefusion_user");
   };
 
-  const googleSignIn = async (role: UserRole = "patient") => {
+  const googleSignIn = async (role: UserRole = "patient", doctorId?: string) => {
     setLoading(true);
     try {
       // Mock Google sign in
@@ -103,6 +114,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         role: role, // Use the selected role
         profilePicture: "https://ui-avatars.com/api/?name=Google+User&background=0070F3&color=fff"
       };
+      
+      // Add doctor ID if provided
+      if (role === "doctor" && doctorId) {
+        mockUser.doctorId = doctorId;
+      }
       
       setCurrentUser(mockUser);
       localStorage.setItem("carefusion_user", JSON.stringify(mockUser));

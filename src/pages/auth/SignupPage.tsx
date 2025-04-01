@@ -15,6 +15,7 @@ const SignupPage: React.FC = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [role, setRole] = useState<"patient" | "doctor">("patient");
+  const [doctorId, setDoctorId] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -27,6 +28,15 @@ const SignupPage: React.FC = () => {
       toast({
         title: "Error",
         description: "Please fill in all fields",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    if (role === "doctor" && !doctorId) {
+      toast({
+        title: "Error",
+        description: "Please enter your doctor ID number",
         variant: "destructive",
       });
       return;
@@ -65,8 +75,18 @@ const SignupPage: React.FC = () => {
   const handleGoogleSignIn = async () => {
     setIsLoading(true);
     
+    if (role === "doctor" && !doctorId) {
+      toast({
+        title: "Error",
+        description: "Please enter your doctor ID number",
+        variant: "destructive",
+      });
+      setIsLoading(false);
+      return;
+    }
+    
     try {
-      await googleSignIn();
+      await googleSignIn(role);
       toast({
         title: "Success",
         description: "You have successfully signed up with Google",
@@ -106,6 +126,40 @@ const SignupPage: React.FC = () => {
           </div>
           
           <div className="space-y-2">
+            <Label>I am a:</Label>
+            <RadioGroup 
+              defaultValue="patient" 
+              className="flex gap-4"
+              value={role}
+              onValueChange={(value) => setRole(value as "patient" | "doctor")}
+            >
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="patient" id="patient" />
+                <Label htmlFor="patient" className="cursor-pointer">Patient</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="doctor" id="doctor" />
+                <Label htmlFor="doctor" className="cursor-pointer">Doctor</Label>
+              </div>
+            </RadioGroup>
+          </div>
+          
+          {role === "doctor" && (
+            <div className="space-y-2">
+              <Label htmlFor="doctorId">Doctor ID Number</Label>
+              <Input
+                id="doctorId"
+                type="text"
+                placeholder="Enter your doctor ID number"
+                value={doctorId}
+                onChange={(e) => setDoctorId(e.target.value)}
+                className="bg-white/50 dark:bg-black/30"
+                required
+              />
+            </div>
+          )}
+          
+          <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
             <Input
               id="email"
@@ -142,25 +196,6 @@ const SignupPage: React.FC = () => {
               className="bg-white/50 dark:bg-black/30"
               required
             />
-          </div>
-          
-          <div className="space-y-2">
-            <Label>I am a:</Label>
-            <RadioGroup 
-              defaultValue="patient" 
-              className="flex gap-4"
-              value={role}
-              onValueChange={(value) => setRole(value as "patient" | "doctor")}
-            >
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="patient" id="patient" />
-                <Label htmlFor="patient" className="cursor-pointer">Patient</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="doctor" id="doctor" />
-                <Label htmlFor="doctor" className="cursor-pointer">Doctor</Label>
-              </div>
-            </RadioGroup>
           </div>
         </div>
         

@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
@@ -13,6 +13,7 @@ const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState<"patient" | "doctor">("patient");
+  const [doctorId, setDoctorId] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -25,6 +26,15 @@ const LoginPage: React.FC = () => {
       toast({
         title: "Error",
         description: "Please fill in all fields",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    if (role === "doctor" && !doctorId) {
+      toast({
+        title: "Error",
+        description: "Please enter your doctor ID number",
         variant: "destructive",
       });
       return;
@@ -54,6 +64,16 @@ const LoginPage: React.FC = () => {
 
   const handleGoogleSignIn = async () => {
     setIsLoading(true);
+    
+    if (role === "doctor" && !doctorId) {
+      toast({
+        title: "Error",
+        description: "Please enter your doctor ID number",
+        variant: "destructive",
+      });
+      setIsLoading(false);
+      return;
+    }
     
     try {
       await googleSignIn(role);
@@ -99,6 +119,21 @@ const LoginPage: React.FC = () => {
               </div>
             </RadioGroup>
           </div>
+
+          {role === "doctor" && (
+            <div className="space-y-2">
+              <Label htmlFor="doctorId">Doctor ID Number</Label>
+              <Input
+                id="doctorId"
+                type="text"
+                placeholder="Enter your doctor ID number"
+                value={doctorId}
+                onChange={(e) => setDoctorId(e.target.value)}
+                className="bg-white/50 dark:bg-black/30"
+                required
+              />
+            </div>
+          )}
 
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
