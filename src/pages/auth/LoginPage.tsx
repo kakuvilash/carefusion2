@@ -5,12 +5,14 @@ import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import AuthLayout from "@/components/auth/AuthLayout";
 import { useAuth } from "@/context/AuthContext";
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState<"patient" | "doctor">("patient");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -31,13 +33,13 @@ const LoginPage: React.FC = () => {
     setIsLoading(true);
     
     try {
-      await login(email, password);
+      await login(email, password, role);
       toast({
         title: "Success",
         description: "You have successfully logged in",
       });
       
-      // Redirect based on user role (handled in ProtectedRoute)
+      // Redirect based on user role
       navigate("/dashboard");
     } catch (error) {
       toast({
@@ -54,7 +56,7 @@ const LoginPage: React.FC = () => {
     setIsLoading(true);
     
     try {
-      await googleSignIn();
+      await googleSignIn(role);
       toast({
         title: "Success",
         description: "You have successfully logged in with Google",
@@ -80,6 +82,24 @@ const LoginPage: React.FC = () => {
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="space-y-4">
+          <div className="space-y-2">
+            <Label>I am a:</Label>
+            <RadioGroup 
+              defaultValue={role} 
+              className="flex space-x-4"
+              onValueChange={(value) => setRole(value as "patient" | "doctor")}
+            >
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="patient" id="patient" />
+                <Label htmlFor="patient" className="cursor-pointer">Patient</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="doctor" id="doctor" />
+                <Label htmlFor="doctor" className="cursor-pointer">Doctor</Label>
+              </div>
+            </RadioGroup>
+          </div>
+
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
             <Input

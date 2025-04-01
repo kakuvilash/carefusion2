@@ -16,10 +16,10 @@ interface AuthContextType {
   isAuthenticated: boolean;
   userRole: UserRole;
   loading: boolean;
-  login: (email: string, password: string) => Promise<void>;
+  login: (email: string, password: string, role?: UserRole) => Promise<void>;
   signUp: (name: string, email: string, password: string, role: UserRole) => Promise<void>;
   logout: () => Promise<void>;
-  googleSignIn: () => Promise<void>;
+  googleSignIn: (role?: UserRole) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -42,7 +42,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     checkAuth();
   }, []);
 
-  const login = async (email: string, password: string) => {
+  const login = async (email: string, password: string, role: UserRole = "patient") => {
     setLoading(true);
     try {
       // Mock login - in a real app, this would be an API call
@@ -50,7 +50,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         id: "user123",
         name: "Demo User",
         email: email,
-        role: email.includes("doctor") ? "doctor" : "patient",
+        role: role, // Use the selected role
         profilePicture: "https://ui-avatars.com/api/?name=Demo+User&background=0070F3&color=fff"
       };
       
@@ -92,7 +92,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     localStorage.removeItem("carefusion_user");
   };
 
-  const googleSignIn = async () => {
+  const googleSignIn = async (role: UserRole = "patient") => {
     setLoading(true);
     try {
       // Mock Google sign in
@@ -100,7 +100,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         id: "google123",
         name: "Google User",
         email: "google@example.com",
-        role: "patient",
+        role: role, // Use the selected role
         profilePicture: "https://ui-avatars.com/api/?name=Google+User&background=0070F3&color=fff"
       };
       
