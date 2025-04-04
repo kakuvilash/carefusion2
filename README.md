@@ -1,69 +1,95 @@
-# Welcome to your Lovable project
+# CareFusion - AI-Powered Healthcare Management
 
-## Project info
+## 🌟 Overview
+CareFusion is an advanced AI-powered healthcare management system designed to streamline **doctor-patient communication**, **secure medical data storage**, and **enhance appointment scheduling**. Built with modern web technologies, it ensures real-time access to medical history while maintaining strict **security and compliance** standards.
 
-**URL**: https://lovable.dev/projects/0b582e18-fd0a-452b-988f-7733e4fd7315
+## 🚀 Features
 
-## How can I edit this code?
+### 🔹 For Patients
+✅ **Seamless Appointment Booking** – Effortlessly schedule doctor appointments with real-time availability.  
+✅ **AI Symptom Analysis** – Get preliminary health insights before consulting a doctor.  
+✅ **Secure Medical Records** – Your health data is encrypted and accessible only with your consent.  
+✅ **Smart Dashboard** – Track upcoming appointments, prescriptions, and doctor notes.  
 
-There are several ways of editing your application.
+### 🔹 For Doctors
+✅ **Patient Dashboard** – View patients' medical histories & upcoming appointments.  
+✅ **AI-Assisted Diagnosis** – Support for symptom analysis & recommended treatments.  
+✅ **Secure Access** – View medical records only with patient consent.  
+✅ **Interactive Doctor Dashboard** – Designed for efficiency and ease of access.  
 
-**Use Lovable**
+## 💻 Tech Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/0b582e18-fd0a-452b-988f-7733e4fd7315) and start prompting.
+### **Frontend:**
+- **React** (Fast & scalable UI)
+- **TypeScript** (Type safety & maintainability)
+- **Vite** (Lightning-fast development)
+- **Shadcn-UI** (Beautiful UI components)
+- **TailwindCSS** (Modern, responsive styling)
 
-Changes made via Lovable will be committed automatically to this repo.
+### **Backend:**
+- **Node.js** + **Express.js** (Scalable backend API)
 
-**Use your preferred IDE**
+### **Database & Authentication:**
+- **MongoDB** (NoSQL Database)
+- **Firebase Authentication** (Secure user access)
+- **Firebase Data Connect** (Real-time database for patient records)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### **AI/ML Integration:**
+- **Gemini API** (AI-powered medical insights)
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### **Cloud & Hosting:**
+- **Firebase Hosting** (Reliable, scalable hosting)
+- **Google Cloud Services**
 
-Follow these steps:
+## 📌 Setup Instructions
 
+### 🔧 Local Development
+
+#### Clone the repository:
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
 git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
 cd <YOUR_PROJECT_NAME>
+```
 
-# Step 3: Install the necessary dependencies.
-npm i
+#### Install dependencies:
+```sh
+npm install
+```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+#### Run the development server:
+```sh
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## 🚀 Deployment
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### **Automatic Deployment via Firebase Hosting**
+```sh
+npm run build
+firebase deploy
+```
 
-**Use GitHub Codespaces**
+### **Manual Deployment (Vercel / Netlify)**
+```sh
+vercel --prod
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 🔒 Security & Compliance
+CareFusion prioritizes **patient data security** with:
+✅ **End-to-End Encryption**
+✅ **Role-Based Access Control (RBAC)**
+✅ **Compliance with Healthcare Regulations (HIPAA & GDPR)**
 
-## What technologies are used for this project?
+## 🛠️ Future Enhancements
+🔹 **Flutter Mobile App** for patients & doctors 📱  
+🔹 **AI Chatbot** for Instant Medical Queries 🤖  
+🔹 **Integration with Government Health Portals** 🏥  
 
-This project is built with .
+## 🤝 Contributors
+👨‍💻 **Kaku Vilash Kumar Reddy** - Founder & Lead Developer  
+👨‍💻 **G. Subhash, Hema Sri, Prathuysha** - Development Team  
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 📩 Contact & Support
+📧 **Email:** vilashkumarreddy@gmail.com  
+🌐 **Website:** [CareFusion App](https://carefusion-4d303.web.app/)
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/0b582e18-fd0a-452b-988f-7733e4fd7315) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
