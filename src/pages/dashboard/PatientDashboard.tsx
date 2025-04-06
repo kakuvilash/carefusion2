@@ -63,7 +63,7 @@ const PatientDashboard: React.FC = () => {
                   specialty: "Cardiologist",
                   avatar: "https://ui-avatars.com/api/?name=Jane+Smith&background=00B4D8&color=fff",
                 }}
-                date="June 15, 2023"
+                date="June 15, 2025"
                 time="10:00 AM - 10:30 AM"
                 status="upcoming"
                 isVideoConsult={true}
@@ -74,7 +74,7 @@ const PatientDashboard: React.FC = () => {
                   specialty: "Dermatologist",
                   avatar: "https://ui-avatars.com/api/?name=Michael+Chen&background=009688&color=fff",
                 }}
-                date="June 18, 2023"
+                date="June 18, 2025"
                 time="2:00 PM - 2:30 PM"
                 status="upcoming"
               />
@@ -84,7 +84,7 @@ const PatientDashboard: React.FC = () => {
                   specialty: "Neurologist",
                   avatar: "https://ui-avatars.com/api/?name=Sarah+Johnson&background=3B82F6&color=fff",
                 }}
-                date="May 28, 2023"
+                date="May 28, 2025"
                 time="3:30 PM - 4:00 PM"
                 status="completed"
               />
@@ -94,7 +94,7 @@ const PatientDashboard: React.FC = () => {
                   specialty: "Orthopedic Surgeon",
                   avatar: "https://ui-avatars.com/api/?name=Robert+Williams&background=EF4444&color=fff",
                 }}
-                date="June 5, 2023"
+                date="June 5, 2025"
                 time="11:00 AM - 11:30 AM"
                 status="cancelled"
               />
